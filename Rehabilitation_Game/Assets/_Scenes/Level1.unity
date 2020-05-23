@@ -96,7 +96,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -238,7 +237,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -430,7 +428,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -509,7 +506,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -559,6 +555,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &485613762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 485613763}
+  m_Layer: 0
+  m_Name: arrowPP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &485613763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485613762}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.98, y: 5.206, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1090744974}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &688855204
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +617,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -763,7 +789,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -807,11 +832,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090744969}
   m_LocalRotation: {x: -0, y: -0, z: -0.0014817867, w: 0.999999}
-  m_LocalPosition: {x: 1.546, y: 5.206, z: -1}
-  m_LocalScale: {x: 0.81450933, y: 1.1837152, z: 1}
+  m_LocalPosition: {x: 0.566, y: 0, z: 0}
+  m_LocalScale: {x: 0.81450933, y: 1.1837145, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 485613763}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.17}
 --- !u!82 &1090744975
 AudioSource:
@@ -916,6 +941,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7756840224319219169, guid: 4915ff8947d38e241a59beb6bcbac01e,
+        type: 3}
+      propertyPath: m_Name
+      value: LeftWall
+      objectReference: {fileID: 0}
     - target: {fileID: 7756840224319219168, guid: 4915ff8947d38e241a59beb6bcbac01e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -971,11 +1001,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7756840224319219169, guid: 4915ff8947d38e241a59beb6bcbac01e,
-        type: 3}
-      propertyPath: m_Name
-      value: LeftWall
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4915ff8947d38e241a59beb6bcbac01e, type: 3}
 --- !u!1001 &1324475401
@@ -985,6 +1010,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1230158491373178068, guid: 8405c7a08c4f1df4fadd4c876625c152,
+        type: 3}
+      propertyPath: m_Name
+      value: Right Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1230158491373178066, guid: 8405c7a08c4f1df4fadd4c876625c152,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1040,11 +1070,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1230158491373178068, guid: 8405c7a08c4f1df4fadd4c876625c152,
-        type: 3}
-      propertyPath: m_Name
-      value: Right Wall
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8405c7a08c4f1df4fadd4c876625c152, type: 3}
 --- !u!1 &1512051075
@@ -1085,6 +1110,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5537643643797366953, guid: 0cd1005c91608df428f49dc31bdf9c2a,
+        type: 3}
+      propertyPath: m_Name
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 5537643643797366952, guid: 0cd1005c91608df428f49dc31bdf9c2a,
         type: 3}
       propertyPath: m_Offset.x
@@ -1094,11 +1124,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: 25.341606
-      objectReference: {fileID: 0}
-    - target: {fileID: 5537643643797366953, guid: 0cd1005c91608df428f49dc31bdf9c2a,
-        type: 3}
-      propertyPath: m_Name
-      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 5537643643797366959, guid: 0cd1005c91608df428f49dc31bdf9c2a,
         type: 3}
@@ -1303,7 +1328,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
