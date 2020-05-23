@@ -53,10 +53,18 @@ public class Throw : MonoBehaviour
 
     public void set_arch_inGame_angle()
     {
-        HandBow handbow1 = FindObjectOfType<HandBow>();
-        Vector3 temp = handbow1.transform.rotation.eulerAngles;
+        Vector3 temp = transform.rotation.eulerAngles;
+
         temp.z = (Angle * 180 / Mathf.PI) - degree_equivalent + Initial_known_equivalent_Angle;
-        handbow1.transform.rotation = Quaternion.Euler(temp);
+        transform.rotation = Quaternion.Euler(temp);
+        Bow Bow1 = FindObjectOfType<Bow>();
+        Vector3 temp2 = Bow1.transform.rotation.eulerAngles;
+        temp2.z = (Angle * 180 / Mathf.PI) - degree_equivalent + Initial_known_equivalent_Angle;
+        Bow1.transform.rotation = Quaternion.Euler(temp2);
+        Hand Hand1 = FindObjectOfType<Hand>();
+        Vector3 temp3 = Hand1.transform.rotation.eulerAngles;
+        temp3.z = (Angle * 180 / Mathf.PI) - degree_equivalent + Initial_known_equivalent_Angle;
+        Hand1.transform.rotation = Quaternion.Euler(temp3);
 
     }
     void set_arch_inGame_angle_afterThrow()
