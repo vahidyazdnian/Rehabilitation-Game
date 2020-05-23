@@ -103,7 +103,9 @@ public class Throw : MonoBehaviour
             }
             FindObjectOfType<CircleManager>().draw_circle(X_positions_circle, Y_positions_circle, startingRaduis);
             startingRaduis -= 0.3f;
+            X_changable_circule += distance;
             distance -= 0.3f;
+
         }
     }
     public void stick_to_archer()
