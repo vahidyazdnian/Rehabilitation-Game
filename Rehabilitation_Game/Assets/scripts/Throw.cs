@@ -18,14 +18,14 @@ public class Throw : MonoBehaviour
     int HeightsInUnits = 12;
     int WidthInUnits = 16;
     float initial_position_x_circle;
-    Vector2 starting_position;
+    [SerializeField] GameObject starting_position;
     public bool stratingpoint = true;
     bool colision = false;
     Vector2 PositionColision;
     // Start is called before the first frame update
     void Start()
     {
-        starting_position = new Vector2(transform.position.x, transform.position.y);
+        //starting_position = new Vector2(transform.position.x, transform.position.y);
 
     }
 
@@ -101,7 +101,9 @@ public class Throw : MonoBehaviour
     }
     public void stick_to_archer()
     {
-        transform.position = starting_position;
+        transform.position = starting_position.transform.position;
+        transform.rotation = starting_position.transform.rotation;
+        //transform.position = starting_position;
     }
     public void LanchOnclick()
     {
