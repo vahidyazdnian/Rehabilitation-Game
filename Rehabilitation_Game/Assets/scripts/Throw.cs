@@ -62,6 +62,11 @@ public class Throw : MonoBehaviour
         temp2.z = (Angle * 180 / Mathf.PI) - degree_equivalent + Initial_known_equivalent_Angle;
         Bow1.transform.rotation = Quaternion.Euler(temp2);
 
+        Hand Hand1 = FindObjectOfType<Hand>();
+        Vector3 temp3 = Hand1.transform.rotation.eulerAngles;
+        temp3.z = (Angle * 180 / Mathf.PI) - degree_equivalent + Initial_known_equivalent_Angle;
+        Hand1.transform.rotation = Quaternion.Euler(temp3);
+
     }
     void set_arch_inGame_angle_afterThrow()
     {
@@ -75,11 +80,12 @@ public class Throw : MonoBehaviour
     public void DrawThePath()
     {
         FindObjectOfType<CircleManager>().clear_circles();
-        float pathStep = 0.25f;
+        float pathStep = 1f;
         float Y_positions_circle;
         float X_positions_circle;
         float Delta_X_position;
         float g = 10f;
+        float startingRaduis = 1f;
         for(float i=transform.position.x; i <= max_x_camera/2 -1; i = i + pathStep)
         {
             X_positions_circle = i;
@@ -93,7 +99,8 @@ public class Throw : MonoBehaviour
             {
                 break;
             }
-            FindObjectOfType<CircleManager>().draw_circle(X_positions_circle, Y_positions_circle, 0.1f);
+            FindObjectOfType<CircleManager>().draw_circle(X_positions_circle, Y_positions_circle, startingRaduis);
+            startingRaduis -= 0.3f;
         }
     }
     public void stick_to_archer()
@@ -114,6 +121,7 @@ public class Throw : MonoBehaviour
 
         PositionColision = transform.position;
         colision = true;
+        GetComponent<AudioSource>().Play();
     }
     public void set_velocity_angle()
     {
