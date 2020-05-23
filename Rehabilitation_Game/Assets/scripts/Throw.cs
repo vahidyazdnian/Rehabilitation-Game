@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Throw : MonoBehaviour
 {
-    [SerializeField] float Initial_known_equivalent_Angle = -92f;//45degree
-    [SerializeField] float degree_equivalent = 45f;
+    [SerializeField] float Initial_known_equivalent_Angle = 0f;//45degree
+    [SerializeField] float degree_equivalent = 0f;
     [SerializeField] float Velocity = 20f;
     [SerializeField] float Angle =Mathf.PI/4;
     [SerializeField] float MaxAngle = 12f;
@@ -87,6 +87,7 @@ public class Throw : MonoBehaviour
         float startingRaduis = 2f;
         float distance = 1f;
         float X_changable_circule = transform.position.x + 1;
+        Debug.Log(X_changable_circule);
         while(X_changable_circule<=max_x_camera/2 -1)
         {
             X_positions_circle = X_changable_circule;
@@ -103,7 +104,6 @@ public class Throw : MonoBehaviour
             FindObjectOfType<CircleManager>().draw_circle(X_positions_circle, Y_positions_circle, startingRaduis);
             startingRaduis -= 0.3f;
             X_changable_circule += distance;
-            distance -= 0.1f;
 
         }
     }
