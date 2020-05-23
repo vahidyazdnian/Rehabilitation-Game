@@ -12,7 +12,7 @@ public class Throw : MonoBehaviour
     [SerializeField] float MaxAngle = 12f;
     [SerializeField] float MinAngle = 0f;
     [SerializeField] float midpoint = 6f;
-    [SerializeField] float max_x_camera = 16;
+    [SerializeField] float max_x_camera = 21.333f;
     [SerializeField] float max_y_camera = 12;
     [SerializeField] float initial_Y_Arch = 5.206f;
     int HeightsInUnits = 12;
@@ -85,11 +85,13 @@ public class Throw : MonoBehaviour
         float X_positions_circle;
         float Delta_X_position;
         float g = 10f;
-        float startingRaduis = 1f;
-        for(float i=transform.position.x; i <= max_x_camera/2 -1; i = i + pathStep)
+        float startingRaduis = 2f;
+        float distance = 1f;
+        float X_changable_circule = transform.position.x + 1;
+        while(X_changable_circule<=max_x_camera/2 -1)
         {
-            X_positions_circle = i;
-            Delta_X_position = i - transform.position.x;
+            X_positions_circle = X_changable_circule;
+            Delta_X_position = X_changable_circule - transform.position.x;
             Y_positions_circle = -g / (2 * (Mathf.Pow(Mathf.Cos(Angle) * Velocity, 2))) * Delta_X_position + Delta_X_position * Mathf.Tan(Angle) + initial_Y_Arch;
             if(Y_positions_circle > max_y_camera-1 )
             {
@@ -101,6 +103,7 @@ public class Throw : MonoBehaviour
             }
             FindObjectOfType<CircleManager>().draw_circle(X_positions_circle, Y_positions_circle, startingRaduis);
             startingRaduis -= 0.3f;
+            distance -= 0.3f;
         }
     }
     public void stick_to_archer()
