@@ -11,6 +11,6 @@ public class TargetColision : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         AudioSource.PlayClipAtPoint(shot, Camera.main.transform.position);
-        SceneManager.LoadScene("WinScreen");
+        //SceneManager.LoadScene("WinScreen");
     }
 }

@@ -19,58 +19,34 @@ public class Throw : MonoBehaviour
     int WidthInUnits = 16;
     float initial_position_x_circle;
     Vector2 starting_position;
-    public bool stratingpoint = true;
-    bool colision = false;
+    public bool stratingPoint = true;
+    public bool colision = false;
     Vector2 PositionColision;
     // Start is called before the first frame update
     void Start()
     {
         starting_position = new Vector2(transform.position.x, transform.position.y);
-
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (stratingpoint)
+        if (stratingPoint)
         {
-            LanchOnclick();
-            stick_to_archer();
             set_velocity_angle();
             DrawThePath();
-            set_arch_inGame_angle();
+            LanchOnclick();
         }
-        else
+        else if(!colision)
         {
             set_arch_inGame_angle_afterThrow();
         }
-
-        if (colision)
-        {
-            transform.position = PositionColision;
-        }
-    }
-
-    public void set_arch_inGame_angle()
-    {
-        Vector3 temp = transform.rotation.eulerAngles;
-
-        temp.z = (Angle * 180 / Mathf.PI) - degree_equivalent + Initial_known_equivalent_Angle;
-        transform.rotation = Quaternion.Euler(temp);
-        Bow Bow1 = FindObjectOfType<Bow>();
-        Vector3 temp2 = Bow1.transform.rotation.eulerAngles;
-        temp2.z = (Angle * 180 / Mathf.PI) - degree_equivalent + Initial_known_equivalent_Angle;
-        Bow1.transform.rotation = Quaternion.Euler(temp2);
-        Hand Hand1 = FindObjectOfType<Hand>();
-        Vector3 temp3 = Hand1.transform.rotation.eulerAngles;
-        temp3.z = (Angle * 180 / Mathf.PI) - degree_equivalent + Initial_known_equivalent_Angle;
-        Hand1.transform.rotation = Quaternion.Euler(temp3);
-
     }
     void set_arch_inGame_angle_afterThrow()
     {
-        float XPosition = transform.position.x;
-        float Angle_arch = Mathf.Atan((Velocity * Mathf.Sin(Angle) - XPosition / (Velocity * Mathf.Cos(Angle))) / (Velocity * Mathf.Cos(Angle)));
+        Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
+        float Angle_arch = Mathf.Atan(velocity.y / velocity.x);
         Vector3 temp = transform.rotation.eulerAngles;
         temp.z = (Angle_arch * 180 / Mathf.PI) - degree_equivalent + Initial_known_equivalent_Angle;
         transform.rotation = Quaternion.Euler(temp);
@@ -87,7 +63,7 @@ public class Throw : MonoBehaviour
         float startingRaduis = 2f;
         float distance = 1f;
         float X_changable_circule = transform.position.x + 1;
-        Debug.Log(X_changable_circule);
+        //Debug.Log(X_changable_circule);
         while(X_changable_circule<=max_x_camera/2 -1)
         {
             X_positions_circle = X_changable_circule;
@@ -107,25 +83,27 @@ public class Throw : MonoBehaviour
 
         }
     }
-    public void stick_to_archer()
-    {
-        transform.position = starting_position;
-    }
     public void LanchOnclick()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            //clear Path
+            FindObjectOfType<CircleManager>().clear_circles();
+
+
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             GetComponent<Rigidbody2D>().velocity = new Vector2(Velocity*Mathf.Cos(Angle), Velocity * Mathf.Sin(Angle));
-            stratingpoint = false;
+            stratingPoint = false;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
+        //GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip);
 
-        PositionColision = transform.position;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        //Destroy(GetComponent<Rigidbody2D>());
+        Destroy(GetComponent<PolygonCollider2D>());
         colision = true;
-        GetComponent<AudioSource>().Play();
     }
     public void set_velocity_angle()
     {
